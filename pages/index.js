@@ -59,14 +59,8 @@ export default function Home() {
           font-size: 4rem;
         }
 
-        .title,
-        .description {
+        .title {
           text-align: center;
-        }
-
-        .description {
-          line-height: 1.5;
-          font-size: 1.5rem;
         }
       `}</style>
 
