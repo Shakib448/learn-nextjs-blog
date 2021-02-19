@@ -28,9 +28,8 @@ export default function Layout({ children, home }) {
       <header className={styles.header}>
         {home ? (
           <>
-            <Image
-              priority
-              src="/images/profile.jpg"
+            <img
+              src="https://www.upwork.com/profile-portraits/c1VbSYWd7YdZwWk4Y5a1HYlh1XHscqoJ1ZlWow7crUePzcsUqs0mNTcM9KlFFxmztd"
               className={utilStyles.borderCircle}
               height={144}
               width={144}
