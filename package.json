@@ -9,7 +9,9 @@
     "install": "prebuild-install || node-gyp rebuild"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "classnames": "^2.2.6",
+    "gray-matter": "^4.0.2",
     "next": "^10.0.0",
     "prebuild-install": "^6.0.1",
     "react": "17.0.1",
