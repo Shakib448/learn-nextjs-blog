@@ -1,7 +1,5 @@
 import Layout from "../../components/Layout/layout";
 import axios from "axios";
-import remark from "remark";
-import html from "remark-html";
 
 export default function Post({ apiRouteData }) {
   return (
