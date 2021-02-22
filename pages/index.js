@@ -1,6 +1,7 @@
 import Layout from "../components/Layout/layout";
 import utilStyles from "../styles/utils.module.scss";
 import axios from "axios";
+import Link from "next/link";
 
 export default function Home({ data }) {
   return (
@@ -15,7 +16,7 @@ export default function Home({ data }) {
                 <br />
                 {title}
                 <br />
-                {body}
+                <Link href={`/posts/${id}`}>{body}</Link>
               </li>
             ))
             .slice(0, 4)}
