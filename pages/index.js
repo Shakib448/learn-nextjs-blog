@@ -11,9 +11,9 @@ export default function Home({ data }) {
           {data
             .map(({ id, body, title }) => (
               <li className={utilStyles.listItem} key={id}>
-                {title}
-                <br />
                 {id}
+                <br />
+                {title}
                 <br />
                 {body}
               </li>
