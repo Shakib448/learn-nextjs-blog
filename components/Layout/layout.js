@@ -27,6 +27,9 @@ export default function Layout({ children, home }) {
         <title>Next js</title>
       </Head>
       <header className={styles.header}>
+        <Link href="/product/products">
+          <a>Product</a>
+        </Link>
         {home ? (
           <>
             <img

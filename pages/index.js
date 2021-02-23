@@ -26,13 +26,11 @@ export default function Home({ data }) {
   );
 }
 
-export async function getStaticProps() {
+Home.getInitialProps = async () => {
   const { data } = await axios.get(
     "https://jsonplaceholder.typicode.com/posts"
   );
   return {
-    props: {
-      data,
-    },
+    data,
   };
-}
+};
