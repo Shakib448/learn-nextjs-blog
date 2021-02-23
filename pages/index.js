@@ -3,6 +3,7 @@ import utilStyles from "../styles/utils.module.scss";
 import axios from "axios";
 import Link from "next/link";
 import { motion } from "framer-motion";
+
 export default function Home({ data }) {
   return (
     <Layout home>
@@ -30,11 +31,13 @@ export default function Home({ data }) {
   );
 }
 
-Home.getInitialProps = async () => {
+export const getStaticProps = async () => {
   const { data } = await axios.get(
     "https://jsonplaceholder.typicode.com/posts"
   );
   return {
-    data,
+    props: {
+      data,
+    },
   };
 };
