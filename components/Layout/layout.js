@@ -3,6 +3,7 @@ import Image from "next/image";
 import styles from "./layout.module.scss";
 import utilStyles from "../../styles/utils.module.scss";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const name = "Muktadir Ahamed Shakib";
 export const siteTitle = "Next.js Sample Website";
@@ -27,9 +28,6 @@ export default function Layout({ children, home }) {
         <title>Next js</title>
       </Head>
       <header className={styles.header}>
-        <Link href="/product/products">
-          <a>Product</a>
-        </Link>
         {home ? (
           <>
             <img
@@ -39,7 +37,13 @@ export default function Layout({ children, home }) {
               width={144}
               alt={name}
             />
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
+            <motion.h1
+              animate={{ scale: 2 }}
+              transition={{ duration: 0.5 }}
+              className={utilStyles.heading2Xl}
+            >
+              {name}
+            </motion.h1>
           </>
         ) : (
           <>
@@ -65,11 +69,17 @@ export default function Layout({ children, home }) {
       </header>
       <main>{children}</main>
       {!home && (
-        <div className={styles.backToHome}>
+        <motion.div
+          drag="x"
+          dragConstraints={{ left: -100, right: 100 }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          className={styles.backToHome}
+        >
           <Link href="/">
             <a>← Back to home</a>
           </Link>
-        </div>
+        </motion.div>
       )}
     </div>
   );
