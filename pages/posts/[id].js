@@ -22,11 +22,23 @@ export default function Post({ apiRouteData }) {
   );
 }
 
-export const getServerSideProps = async (context) => {
+export async function getStaticPaths() {
+  const { data } = await axios.get(
+    "https://jsonplaceholder.typicode.com/posts"
+  );
+
+  const paths = data.map((post) => ({
+    params: { id: post.id.toString() },
+  }));
+  console.log(paths);
+
+  return { paths, fallback: false };
+}
+
+export const getStaticProps = async ({ params }) => {
   try {
-    const { id } = context.query;
     const { data } = await axios.get(
-      `https://jsonplaceholder.typicode.com/posts/${id}`
+      `https://jsonplaceholder.typicode.com/posts/${params.id}`
     );
     return {
       props: { apiRouteData: data },
