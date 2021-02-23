@@ -22,14 +22,14 @@ export default function Post({ apiRouteData }) {
   );
 }
 
-Post.getInitialProps = async (context) => {
+export const getServerSideProps = async (context) => {
   try {
     const { id } = context.query;
     const { data } = await axios.get(
       `https://jsonplaceholder.typicode.com/posts/${id}`
     );
     return {
-      apiRouteData: data,
+      props: { apiRouteData: data },
     };
   } catch (error) {
     console.log(error);
