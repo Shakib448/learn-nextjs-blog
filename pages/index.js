@@ -2,7 +2,7 @@ import Layout from "../components/Layout/layout";
 import utilStyles from "../styles/utils.module.scss";
 import axios from "axios";
 import Link from "next/link";
-
+import { motion } from "framer-motion";
 export default function Home({ data }) {
   return (
     <Layout home>
@@ -11,13 +11,17 @@ export default function Home({ data }) {
         <ul className={utilStyles.list}>
           {data
             .map(({ id, body, title }) => (
-              <li className={utilStyles.listItem} key={id}>
+              <motion.li
+                animate={{ scale: 0.8 }}
+                className={utilStyles.listItem}
+                key={id}
+              >
                 {id}
                 <br />
                 {title}
                 <br />
                 <Link href={`/posts/${id}`}>{body}</Link>
-              </li>
+              </motion.li>
             ))
             .slice(0, 4)}
         </ul>
@@ -26,13 +30,11 @@ export default function Home({ data }) {
   );
 }
 
-export async function getStaticProps() {
+Home.getInitialProps = async () => {
   const { data } = await axios.get(
     "https://jsonplaceholder.typicode.com/posts"
   );
   return {
-    props: {
-      data,
-    },
+    data,
   };
-}
+};
