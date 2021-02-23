@@ -1,7 +1,5 @@
 import Layout from "../../components/Layout/layout";
 import axios from "axios";
-import remark from "remark";
-import html from "remark-html";
 
 export default function Post({ apiRouteData }) {
   return (
@@ -17,15 +15,14 @@ export default function Post({ apiRouteData }) {
   );
 }
 
-export const getServerSideProps = async ({ query }) => {
+Post.getInitialProps = async (context) => {
   try {
+    const { id } = context.query;
     const { data } = await axios.get(
-      `https://jsonplaceholder.typicode.com/posts/${query.id}`
+      `https://jsonplaceholder.typicode.com/posts/${id}`
     );
     return {
-      props: {
-        apiRouteData: data,
-      },
+      apiRouteData: data,
     };
   } catch (error) {
     console.log(error);
